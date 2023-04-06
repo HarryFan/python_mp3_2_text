@@ -64,3 +64,37 @@ pip install pydub SpeechRecognition
     
 
 應用程式將 MP3 音檔拆分成多個 30 秒的片段，並使用 Google Speech Recognition 進行語音識別。之後，將所有片段的識別結果合併並儲存到輸出路徑。
+
+要將此程式打包為 Windows、macOS 和 Linux 可執行的應用，您可以使用 PyInstaller。首先，安裝 PyInstaller：
+
+```
+pip install pyinstaller
+```
+
+接下來，根據目標平台，分別在 Windows、macOS 和 Linux 上運行以下命令：
+
+### Windows
+
+```
+pyinstaller --onefile --noconsole mp3-to-text-gui.py
+```
+
+這將生成一個名為 `mp3-to-text-gui.exe` 的可執行文件，位於 `dist` 目錄中。
+
+### macOS
+
+```
+pyinstaller --onefile --noconsole --add-binary '/System/Library/Frameworks/Tk.framework/Tk':'tk' --add-binary '/System/Library/Frameworks/Tcl.framework/Tcl':'tcl' mp3-to-text-gui.py
+```
+
+這將生成一個名為 `mp3-to-text-gui` 的可執行文件，位於 `dist` 目錄中。
+
+### Linux
+
+```
+pyinstaller --onefile --noconsole mp3-to-text-gui.py
+```
+
+這將生成一個名為 `mp3-to-text-gui` 的可執行文件，位於 `dist` 目錄中。
+
+完成後，您可以將可執行文件分發給其他人。他們無需安裝 Python 或其他依賴項即可運行該應用程式。請注意，打包過程可能會使應用程序的大小增加，因為它包含了所有依賴的庫和 Python 解釋器。

@@ -7,7 +7,7 @@ block_cipher = None
 a = Analysis(
     ['mp3-to-text-gui.py'],
     pathex=[],
-    binaries=[],
+    binaries=[('/System/Library/Frameworks/Tk.framework/Tk', 'tk'), ('/System/Library/Frameworks/Tcl.framework/Tcl', 'tcl')],
     datas=[],
     hiddenimports=[],
     hookspath=[],
